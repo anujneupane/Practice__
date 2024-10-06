@@ -8,64 +8,14 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-            <form method="POST">
+        <form method="POST">
                 {% csrf_token %}
-                
-                <!-- Render form field for 'name' -->
-                <label for="id_name">Name:</label>
-                {{ form.name }}
-                <!-- Display error for 'name' field -->
-                {% if form.name.errors %}
-                    <ul>
-                        {% for error in form.name.errors %}
-                            <li style="color: red;">{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-                <br>
-                <hr>
-                <!-- Render form field for 'email' -->
-                <label for="id_email">Email:</label>
-                {{ form.email }}
-                <!-- Display error for 'email' field -->
-                {% if form.email.errors %}
-                    <ul>
-                        {% for error in form.email.errors %}
-                            <li style="color: red;">{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-                <br>
-                <hr>
-                
-                    
-                    <!-- Render form field for 'name' -->
-                    <label for="id_password">Password:</label>
-                    {{ form.password }}
-                    <!-- Display error for 'name' field -->
-                    {% if form.password.errors %}
-                        <ul>
-                            {% for error in form.password.errors %}
-                                <li style="color: red;">{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                    <br>
-                    <hr>
-                    <!-- Render form field for 'email' -->
-                    <label for="id_rpassword">RPassword:</label>
-                    {{ form.rpassword }}
-                    <!-- Display error for 'email' field -->
-                    {% if form.rpassword.errors %}
-                        <ul>
-                            {% for error in form.rpassword.errors %}
-                                <li style="color: red;">{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                    <br>
-                    <hr>
-            
+                {{form.non_field_errors}}
+                {% for field in form %}
+                <div>
+                    {{field.label_tag}} {{field}} <span>{{field.errors|striptags}}</span>
+                </div>
+                {% endfor %}
             <button type="submit">Submit</button>
         </form>
         
