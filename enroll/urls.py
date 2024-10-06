@@ -5,7 +5,7 @@ from .import views
 
 urlpatterns = [
 
-    path('1/', views.formvalid),
+    path('1/', views.valid),
     
     
 ]

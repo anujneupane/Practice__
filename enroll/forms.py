@@ -1,14 +1,21 @@
 from django import forms 
 from django.core import validators
  
-def start_with_a(value):
-    if value[0] != 'a':
-        raise forms.ValidationError('Name must be started with a')
-
 class FormValid(forms.Form):
-     name = forms.CharField(validators = [start_with_a])
+     name = forms.CharField()
      email = forms.EmailField()
-   
+     password = forms.CharField(widget=forms.PasswordInput)
+     rpassword = forms.CharField(label='Password(Retype)',widget=forms.PasswordInput)
+
+
+def clean(self):
+    cleaned_data = super().clean()
+    pwd = self.cleaned_data['password']
+    rpwd = self.cleaned_data['rpassword']
+    if pwd != rpwd:  
+      raise forms.ValidationError('Passwords do not match')
+    return cleaned_data
+
  
         
        
