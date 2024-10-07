@@ -13,9 +13,10 @@ def valid(request):
             print('email:',fm.cleaned_data ['email'])
             print('Password:',fm.cleaned_data ['password'])
             print('Rpassword:',fm.cleaned_data ['rpassword'])
-            fm = FormValid()
+           
             # return redirect(request.path)
+            
     else:
-     fm = FormValid() #form for GET request
+        fm = FormValid() #form for GET request
         
     return render(request,'enroll/form2.html',{'form':fm})  

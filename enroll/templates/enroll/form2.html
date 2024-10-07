@@ -7,22 +7,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
         <style>
-            .errorlist{
-                color:red;
-                list-style-type:none;
-
+            .error{
+            color:red;
+            font-size: 8px;
             }
+            .required{
+           color:red;
+           font-size: 8px;
+            }
+            
         </style>
     </head>
     <body>
         <form method="POST" novalidate>
-                {% csrf_token %}
-                {{form.non_field_errors}}
-                {% for field in form %}
-                <div>
-                    {{field.label_tag}} {{field}} <span>{{field.errors}}</span>
-                </div>
-                {% endfor %}
+            {% csrf_token %}
+            {{form}}
+                
             <button type="submit">Submit</button>
         </form>
         
