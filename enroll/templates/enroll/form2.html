@@ -6,6 +6,13 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <style>
+            .errorlist{
+                color:red;
+                list-style-type:none;
+
+            }
+        </style>
     </head>
     <body>
         <form method="POST" novalidate>
@@ -13,7 +20,7 @@
                 {{form.non_field_errors}}
                 {% for field in form %}
                 <div>
-                    {{field.label_tag}} {{field}} <span>{{field.errors|striptags}}</span>
+                    {{field.label_tag}} {{field}} <span>{{field.errors}}</span>
                 </div>
                 {% endfor %}
             <button type="submit">Submit</button>

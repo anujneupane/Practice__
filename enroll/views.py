@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import FormValid
 
 # Create your views here.
@@ -14,8 +14,8 @@ def valid(request):
             print('Password:',fm.cleaned_data ['password'])
             print('Rpassword:',fm.cleaned_data ['rpassword'])
             fm = FormValid()
-            
+            # return redirect(request.path)
     else:
      fm = FormValid() #form for GET request
         
-    return render(request,'enroll/form2.html',{'form':fm})
+    return render(request,'enroll/form2.html',{'form':fm})  
