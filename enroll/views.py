@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect
 from .forms import FormValid
-from .models import user
 
 # Create your views here.
 
@@ -13,13 +12,11 @@ def valid(request):
            name      = fm.cleaned_data ['name']
            email     = fm.cleaned_data ['email']
            password  = fm.cleaned_data ['password']
-           Rpassword = fm.cleaned_data ['rpassword']
-           wow = user(name = name, 
-                      email=email,
-                      password = password,
-                      Rpassword = Rpassword )
-           wow.save()
-            # return redirect(request.path)
+           Rpassword = fm.cleaned_data ['Rpassword']
+           print(name)
+           print(email)
+           print(password)
+           print(Rpassword)
              
     else:
         fm = FormValid() #form for GET request
