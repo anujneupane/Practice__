@@ -1,5 +1,6 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from .forms import FormValid
+from .models import user
 
 # Create your views here.
 
@@ -13,12 +14,12 @@ def valid(request):
            email     = fm.cleaned_data ['email']
            password  = fm.cleaned_data ['password']
            Rpassword = fm.cleaned_data ['Rpassword']
-           print(name)
-           print(email)
-           print(password)
-           print(Rpassword)
+           reg = user(name = name, email = email,password = password, Rpassword = Rpassword)
+           reg.save()
+          
+           fm = FormValid()
              
     else:
         fm = FormValid() #form for GET request
         
-    return render(request,'enroll/form2.html',{'form':fm})  
+    return render(request,'enroll/form2.html',{'form':fm})   
