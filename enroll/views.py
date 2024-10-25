@@ -14,7 +14,7 @@ def valid(request):
            email     = fm.cleaned_data ['email']
            password  = fm.cleaned_data ['password']
            Rpassword = fm.cleaned_data ['Rpassword']
-           reg = user(name = name, email = email,password = password, Rpassword = Rpassword)
+           reg = user(id=1,name = name, email = email,password = password, Rpassword = Rpassword)
            reg.save()
           
            fm = FormValid()
