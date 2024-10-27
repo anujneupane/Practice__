@@ -20,5 +20,6 @@ from enroll import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('go/', include('enroll.urls'))
+    path('go/', include('enroll.urls')),
+    path("", views.home,{'status': 'OK'}, name= 'home')
 ]

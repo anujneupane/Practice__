@@ -21,11 +21,15 @@
         </style>
     </head>
     <body>
+        <h1>{{id}}</h1>
+        <h1>{{name}}</h1>
+
         <form method="POST" novalidate>
             {% csrf_token %}
             {{form.as_p}}
-                
-            <button type="submit">Submit</button>
+            <button type="submit">Submit</button> <br>
+            <a href="{% url 'home' %}"> Back to Home page</a>
+    
         </form>
         
 

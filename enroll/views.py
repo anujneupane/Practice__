@@ -1,27 +1,14 @@
-from django.shortcuts import render,redirect
-from .forms import FormValid
-from .models import user
+from django.shortcuts import render
 
-# Create your views here.
+def home(request,status):
+    print(status)
+    return render(request,'enroll/home.html')
 
-
-def valid(request):
-    if request.method == 'POST':
-        fm = FormValid(request.POST)
-        if fm.is_valid():
-            
-           name      = fm.cleaned_data ['name']
-           email     = fm.cleaned_data ['email']
-           password  = fm.cleaned_data ['password']
-           Rpassword = fm.cleaned_data ['rpassword']
-           wow = user(name = name, 
-                      email=email,
-                      password = password,
-                      Rpassword = Rpassword )
-           wow.save()
-            # return redirect(request.path)
-             
-    else:
-        fm = FormValid() #form for GET request
-        
-    return render(request,'enroll/form2.html',{'form':fm})  
+def valid(request,my_id): 
+ if my_id == 1:
+     employee = { 'id' : my_id, 'name': 'Manish'}
+ if my_id == 2:
+     employee = { 'id' : my_id, 'name': 'Baibhav'}
+ if my_id == 3:
+     employee = { 'id' : my_id, 'name': 'Aaku'}
+ return render(request,'enroll/form2.html', employee)
